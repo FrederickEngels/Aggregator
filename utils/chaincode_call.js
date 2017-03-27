@@ -13,36 +13,36 @@ module.exports.setup = function(sdk, cc){
 module.exports.process_msg = function(data, type){
 	if(type == "insuranceRegisteration"){
 		console.log("Calling chain code for insuranceRegisteration");
-		//chaincode.invoke.init_marble([data.name, data.color, data.size, data.user],cb_invoked);
-		chaincode.invoke.init_marble(["BOB", "red", "small", "bob"],cb_invoked);
+		//chaincode.invoke.init_marble([data.name, data.color, data.size, data.user],cb_invoked);		
+		chaincode.invoke.write(data.insId,data,cb_invoked);
 	}
 	else if(type == "vendorRegisteration"){
 		console.log("Calling chain code for vendorRegisteration");
-		chaincode.invoke.init_marble(["BOB", "red", "small", "bob"],cb_invoked);
+		chaincode.invoke.write(data.vendorId,data,cb_invoked);
 	}
 	else if(type == "addNewRequest"){
 		console.log("Calling chain code for addNewRequest");
-		chaincode.invoke.init_marble(["BOB", "red", "small", "bob"],cb_invoked);
+		chaincode.invoke.write(data.reqId,data,cb_invoked);
 	}
 	else if(type == "updateRequest"){
 		console.log("Calling chain code for updateRequest");
-		chaincode.invoke.init_marble(["BOB", "red", "small", "bob"],cb_invoked);
+		chaincode.invoke.write(data.reqId,data,cb_invoked);
 	}
 	else if(type == "vendorDashboardCount"){
 		console.log("Calling chain code for vendorDashboardCount");
-		chaincode.invoke.init_marble(["BOB", "red", "small", "bob"],cb_invoked);
+		chaincode.invoke.read(data.vendorId,cb_invoked);
 	}
 	else if(type == "vendorRequestDetails"){
 		console.log("Calling chain code for vendorRequestDetails");
-		chaincode.invoke.init_marble(["BOB", "red", "small", "bob"],cb_invoked);
+		chaincode.invoke.read(data.vendorId,cb_invoked);
 	}
 	else if(type == "insuranceDashboardCount"){
 		console.log("Calling chain code for insuranceDashboardCount");
-		chaincode.invoke.init_marble(["BOB", "red", "small", "bob"],cb_invoked);
+		chaincode.invoke.read(data.insId,cb_invoked);
 	}
 	else if(type == "insurancerequestDetails"){
 		console.log("Calling chain code for insurancerequestDetails");
-		chaincode.invoke.init_marble(["BOB", "red", "small", "bob"],cb_invoked);
+		chaincode.invoke.read(data.insId,cb_invoked);;
 	}
 	
 	//got the marble index, lets get each marble
