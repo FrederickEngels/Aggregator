@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 
 	"github.com/hyperledger/fabric/core/chaincode/shim"
@@ -36,4 +35,3 @@ func read(stub shim.ChaincodeStubInterface, args []string) pb.Response {
 	fmt.Println("- end read")
 	return shim.Success(valAsbytes)                  //send it onward
 }
-

@@ -1,7 +1,6 @@
-package main;
+package main
 
 import (
-	"encoding/json"
 	"errors"
 	"fmt"
 	"strconv"
@@ -14,6 +13,7 @@ import (
 // SimpleChaincode example simple Chaincode implementation
 type SimpleChaincode struct {
 }
+
 
 // ============================================================================================================================
 // Asset Definitions
@@ -73,6 +73,8 @@ type Address struct {
 		Phone string `json:"phone"`
 }
 
+
+
 // ============================================================================================================================
 // Main
 // ============================================================================================================================
@@ -113,7 +115,6 @@ func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface) pb.Response {
 	return shim.Success(nil)
 }
 
-
 // ============================================================================================================================
 // Invoke - Our entry point for Invocations
 // ============================================================================================================================
@@ -122,20 +123,48 @@ func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface) pb.Response {
 	fmt.Println(" ")
 	fmt.Println("starting invoke, for - " + function)
 
-	
 	// Handle different functions
 	if function == "init" {                   //initialize the chaincode state, used as reset
 		return t.Init(stub)
-	} else if function == "init_applicant" {   //Init applicant
-		return t.init_applicant(stub, args)
-	} else if function == "init_insurance" {  	// Init Insurance
-		return t.init_insurance(stub, args)
-	} else if function == "init_vendor" {		//Init Vendor
-		return t.init_vendor(stub, args);
-	}
+	} else if function == "read" {            //generic read ledger
+		return read(stub, args)
+	} else if function == "write" {           //generic writes to ledger
+		return write(stub, args)
+	} 
 
 	// error out
 	fmt.Println("Received unknown invoke function name - " + function)
 	return shim.Error("Received unknown invoke function name - '" + function + "'")
 }
 
+
+// ============================================================================================================================
+// Query - legacy function
+// ============================================================================================================================
+func (t *SimpleChaincode) Query(stub shim.ChaincodeStubInterface) pb.Response {
+	return shim.Error("Unknown supported call - Query()")
+}
+
+// ========================================================
+// Make Timestamp - create a timestamp in ms
+// ========================================================
+func makeTimestamp() int64 {
+	return time.Now().UnixNano() / (int64(time.Millisecond) / int64(time.Nanosecond))
+}
+
+
+
+// ========================================================
+// Input Sanitation - dumb input checking, look for empty strings
+// ========================================================
+func sanitize_arguments(strs []string) error{
+	for i, val:= range strs {
+		if len(val) <= 0 {
+			return errors.New("Argument " + strconv.Itoa(i) + " must be a non-empty string")
+		}
+		if len(val) > 32 {
+			return errors.New("Argument " + strconv.Itoa(i) + " must be <= 32 characters")
+		}
+	}
+	return nil
+}
