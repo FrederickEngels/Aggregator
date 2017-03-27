@@ -1,0 +1,15 @@
+{
+	"vendorId" : "D001",
+	"password" : "12345",
+	"name" : "John Lab",
+	"address": {
+		"street" : "125,John Sq St",
+		"state" : "NewYork",
+		"zip": "125003",
+		"phone": "+13154892156"
+	}, 
+	"acctBalance" : 0,
+	"inProgressReq" : [
+		"REQ001"
+	]
+}

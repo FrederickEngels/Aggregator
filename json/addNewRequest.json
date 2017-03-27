@@ -1,0 +1,18 @@
+{
+	"reqId" : "REQ001",
+	"insId" : "AXA001",
+	"policyNo": "",
+	"vendorId" : "",
+	"screening" : {
+		"id" : "SCRBLO001",
+		"type" : "Blood Test",
+		"status" : "",
+		"hemoglobin" : "",
+		"whiteCellValue" : "",
+		"docId" : ""
+	},
+	"scheduleDate" : "04/03/2017",
+	"scheduleTime": "10.00 AM",
+	"status" : "1",//0-Not Started,1- In progress, 2-Done
+	"pendingwith":"PRO001" // Vendor, Insurance
+}

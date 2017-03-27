@@ -1,0 +1,74 @@
+[
+{
+	"reqId" : "REQ001",
+	"insId" : "ABC001",
+	"policyNo": "",
+	"vendorId" : "",
+	"screening" : {
+		"id" : "SCRBLO001",
+		"type" : "Blood Test",
+		"status" : "",
+		"hemoglobin" : "",
+		"whiteCellValue" : "",
+		"docId" : ""
+	},
+	"scheduleDate" : "04/03/2017",
+	"scheduleTime": "10.00 AM",
+	"status" : "1",
+	"pendingwith":"PRO001" 
+},
+{
+	"reqId" : "REQ002",
+	"insId" : "ABC001",
+	"policyNo": "",
+	"vendorId" : "",
+	"screening" : {
+		"id" : "SCRBLO001",
+		"type" : "Blood Test",
+		"status" : "",
+		"hemoglobin" : "",
+		"whiteCellValue" : "",
+		"docId" : ""
+	},
+	"scheduleDate" : "04/03/2017",
+	"scheduleTime": "10.00 AM",
+	"status" : "1",
+	"pendingwith":"PRO001" 
+},
+{
+	"reqId" : "REQ003",
+	"insId" : "ABC001",
+	"policyNo": "",
+	"vendorId" : "",
+	"screening" : {
+		"id" : "SCRBLO001",
+		"type" : "Blood Test",
+		"status" : "",
+		"hemoglobin" : "",
+		"whiteCellValue" : "",
+		"docId" : ""
+	},
+	"scheduleDate" : "04/03/2017",
+	"scheduleTime": "10.00 AM",
+	"status" : "1",
+	"pendingwith":"PRO001" 
+},
+{
+	"reqId" : "REQ004",
+	"insId" : "ABC001",
+	"policyNo": "",
+	"vendorId" : "",
+	"screening" : {
+		"id" : "SCRBLO001",
+		"type" : "Blood Test",
+		"status" : "",
+		"hemoglobin" : "",
+		"whiteCellValue" : "",
+		"docId" : ""
+	},
+	"scheduleDate" : "04/03/2017",
+	"scheduleTime": "10.00 AM",
+	"status" : "1",
+	"pendingwith":"PRO001" 
+}
+]

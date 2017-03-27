@@ -1,0 +1,14 @@
+{
+	"insId" : "AXA001",
+	"name" : "AXA-US",
+	"address": {
+		"street" : "125,John Sq St",
+		"state" : "NewYork",
+		"zip": "125003",
+		"phone": "+13154892156"
+	},
+	"acctBalance" : 0,
+	"inProgressReq" : [
+		"REQ001"
+	]
+}
