@@ -71,7 +71,7 @@ var options = 	{
 					},
 					chaincode:{
 						zip_url: 'https://github.com/FrederickEngels/Aggregator/archive/master.zip',
-						unzip_dir: 'Aggregator/chaincode',													//subdirectroy name of chaincode after unzipped
+						unzip_dir: 'Aggregator-master/chaincode',													//subdirectroy name of chaincode after unzipped
 						git_url: 'https://github.com/FrederickEngels/Aggregator/tree/master/chaincode',						//GO get http url
 					
 						//hashed cc name from prev deployment, comment me out to always deploy, uncomment me when its already deployed to skip deploying again
@@ -179,7 +179,7 @@ function cb_deployed(e){
 
 
 app.post('/registeration/insurance', function (req, res) {
-   fs.readFile( __dirname + "/" + "insuranceRegisteration.json", 'utf8', function (err, data) {
+   fs.readFile( __dirname + "/json/" + "insuranceRegisteration.json", 'utf8', function (err, data) {
 	   if(err){
 		   console.log(err);
 	   }
@@ -192,7 +192,7 @@ app.post('/registeration/insurance', function (req, res) {
 })
 
 app.post('/registeration/vendor', function (req, res) {
-   fs.readFile( __dirname + "/" + "vendorRegisteration.json", 'utf8', function (err, data) {
+   fs.readFile( __dirname + "/json/" + "vendorRegisteration.json", 'utf8', function (err, data) {
 	   if(err){
 		   console.log(err);
 	   }
@@ -205,7 +205,7 @@ app.post('/registeration/vendor', function (req, res) {
 })
 
 app.post('/addNewRequest', function (req, res) {
-   fs.readFile( __dirname + "/" + "newRequest.json", 'utf8', function (err, data) {
+   fs.readFile( __dirname + "/json/" + "addNewRequest.json", 'utf8', function (err, data) {
 	   if(err){
 		   console.log(err);
 	   }
@@ -218,7 +218,7 @@ app.post('/addNewRequest', function (req, res) {
 })
 
 app.post('/updateRequest', function (req, res) {
-   fs.readFile( __dirname + "/" + "newRequest.json", 'utf8', function (err, data) {
+   fs.readFile( __dirname + "/json/" + "addNewRequest.json", 'utf8', function (err, data) {
 	   if(err){
 		   console.log(err);
 	   }
@@ -233,7 +233,7 @@ app.post('/updateRequest', function (req, res) {
 app.get('/vendorDashboard/count/:id', function (req, res) {  
 	console.log('vendor dashboard call'); 
 		var obj = 	{
-						reqId: req.params.id,						
+						vendorId: req.params.id,						
 					};
        console.log( JSON.stringify(obj) );
 	   chainCodeCall.process_msg(JSON.stringify(obj) , "vendorDashboardCount");	   
@@ -242,7 +242,7 @@ app.get('/vendorDashboard/count/:id', function (req, res) {
 
 app.get('/vendorDashboard/Details/:id/:reqStatus', function (req, res) {   
 		var obj = 	{
-						reqId: req.params.id,						
+						vendorId: req.params.id,						
 						reqStatus: req.params.reqStatus
 					};
        console.log( JSON.stringify(obj) );       
@@ -252,7 +252,7 @@ app.get('/vendorDashboard/Details/:id/:reqStatus', function (req, res) {
 
 app.get('/insuranceDashboard/count/:id', function (req, res) {   
 		var obj = 	{
-						reqId: req.params.id,												
+						insId: req.params.id,												
 					};
        console.log( JSON.stringify(obj) );
 	   chainCodeCall.process_msg(JSON.stringify(obj) , "insuranceDashboardCount");	   
@@ -261,7 +261,7 @@ app.get('/insuranceDashboard/count/:id', function (req, res) {
 
 app.get('/insuranceDashboard/Details/:id/:reqStatus', function (req, res) {   
 		var obj = 	{
-						reqId: req.params.id,						
+						insId: req.params.id,						
 						reqStatus: req.params.reqStatus
 					};
        console.log( JSON.stringify(obj) );       
@@ -288,24 +288,6 @@ app.get('/aggregatedDashboard/Details/:id/:reqStatus', function (req, res) {
        res.end( JSON.stringify(obj) );
 })
 
-var user = {
-   "user4" : {
-      "name" : "mohit",
-      "password" : "password4",
-      "profession" : "teacher",
-      "id": 4
-   }
-}
-
-app.post('/addUser', function (req, res) {
-   // First read existing users.
-   fs.readFile( __dirname + "/" + "users.json", 'utf8', function (err, data) {
-       data = JSON.parse( data );
-       data["user4"] = user["user4"];
-       console.log( data );
-       res.end( JSON.stringify(data));
-   });
-})
 
 
   var server = app.listen(8081, function () {
